@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test": "mocha --compilers js:babel-register src"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.4.0",
+    "mocha": "^3.0.2"
+  }
+}

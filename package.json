@@ -1,4 +1,9 @@
 {
+  "name": "molecules",
+  "version": "0.0.1",
+  "description": "Molecule simulation engine",
+  "license": "GPL-3.0",
+  "repository": "github:stan-kondrat/molecules",
   "scripts": {
     "test": "mocha --compilers js:babel-register src"
   },

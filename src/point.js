@@ -5,16 +5,14 @@ class Point {
   }
 
   static distance(a, b) {
-    const dx = a.x - b.x;
-    const dy = a.y - b.y;
-    return Math.sqrt(dx * dx + dy * dy);
+    return Math.hypot(a.x - b.x, a.y - b.y);
   }
 
   static angleRadians(a, b) {
     return Math.atan2(b.y - a.y, b.x - a.x);
   }
 
-  static angleDeg(a, b) {
+  static angleDegrees(a, b) {
     return Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
   }
 }
@@ -43,7 +41,7 @@ describe('Class point', function() {
   it('should calculate angle in degrees between two points', function() {
     let point1 = new Point(0, 0);
     let point2 = new Point(1, 1);
-    assert.equal(Point.angleDeg(point1, point2), 45);
+    assert.equal(Point.angleDegrees(point1, point2), 45);
   });
 })
 

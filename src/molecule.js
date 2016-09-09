@@ -2,7 +2,7 @@ import Point from './point';
 import Vector from './vector';
 
 class Molecule {
-  constructor(point = new Point(), vector = new Vector(), radius = 1) {
+  constructor(point = new Point(), vector = new Vector(), radius = 0) {
     this.position = point;
     this.direction = vector;
     this.radius = radius;
@@ -56,7 +56,7 @@ describe('Molecule class', function() {
 
   it('should detect collision', function() {
     let m1 = new Molecule(new Point(1, 0));
-    let m2 = new Molecule(new Point(2, 0));
+    let m2 = new Molecule(new Point(2, 0), null, 1.1);
     let m3 = new Molecule(new Point(5, 5), null, 5);
     assert.isTrue(Molecule.collision(m1, m2));
     assert.isFalse(Molecule.collision(m1, m3));
@@ -80,4 +80,4 @@ describe('Molecule class', function() {
 })
 
 
-export default Vector;
+export default Molecule;

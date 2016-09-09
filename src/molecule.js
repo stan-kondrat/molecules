@@ -13,6 +13,7 @@ class Molecule {
     this.position.x += distance * Math.cos(angel);
     this.position.y += distance * Math.sin(angel);
   }
+
   /**
    * Collision detections of two molecules
    * @returns {Boolean}
@@ -26,11 +27,15 @@ class Molecule {
    * Continuous collision detections of two molecules
    * @returns {Number|undefined} - distance
    */
-  static continuousCollision(a, b){
+  static continuousCollision(a, b, centersOnly){
+    var time1 = (b.position.x - a.position.x)/(a.direction.x - b.direction.x);
+    var time2 = (b.position.y - a.position.y)/(a.direction.y - b.direction.y);
 
+    if (centersOnly) {
+      return time1 == time2 ? time1 : undefined;
+    }
   }
 }
-
 
 describe('Molecule class', function() {
   const assert = require('chai').assert;
@@ -57,8 +62,20 @@ describe('Molecule class', function() {
     assert.isFalse(Molecule.collision(m1, m3));
   });
 
-  it('should detect continuous collision', function() {
-    assert(false);
+  it('detection continuous collision centers of molecules', function() {
+    let m1 = new Molecule(new Point(2, 2), new Vector(1, 1), 0);
+    let m2 = new Molecule(new Point(6, 0), new Vector(-1, 2), 0);
+    let m3 = new Molecule(new Point(5, 3), new Vector(0, 0));
+    assert.equal(Molecule.continuousCollision(m1, m2, true), 2, 'collision should be in point {4,4}');
+    assert.isUndefined(Molecule.continuousCollision(m1, m3, true));
+  });
+
+  it('detection continuous collision consider radius of molecules', function() {
+    let m1 = new Molecule(new Point(0, 0), new Vector(1, 0), 0);
+    let m2 = new Molecule(new Point(0, 1), new Vector(1, 0), 0);
+    let m3 = new Molecule(new Point(5, 0), new Vector(0, 0), 1);
+    assert.equal(Molecule.continuousCollision(m1, m3), 2, 'collision should be in point {4,0}');
+    assert.equal(Molecule.continuousCollision(m2, m3), 2, 'collision should be in point {5,1}');
   });
 })
 

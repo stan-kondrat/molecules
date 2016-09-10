@@ -8,10 +8,15 @@ class Molecule {
     this.radius = radius;
   }
 
-  move(distance) {
+  moveByDistance(distance) {
     let angel = this.speed.angleRadians();
     this.position.x += distance * Math.cos(angel);
     this.position.y += distance * Math.sin(angel);
+  }
+
+  moveByTime(time) {
+    this.position.x += time * this.speed.x;
+    this.position.y += time * this.speed.y;
   }
 
   /**
@@ -42,16 +47,21 @@ describe('Molecule class', function() {
 
   it('should create new molecule', function() {
     let molecule = new Molecule(new Point(0, 1), new Vector(-1, 0));
-    molecule.move(5);
+    molecule.moveByDistance(5);
     assert.equal(parseInt(molecule.position.x), -5);
     assert.equal(parseInt(molecule.position.y), 1);
     assert.equal(molecule.speed.x, -1); // not changed
     assert.equal(molecule.speed.y, 0); // not changed
 
     let molecule2 = new Molecule(new Point(1, 1), new Vector(3, 4));
-    molecule2.move(5);
+    molecule2.moveByDistance(5);
     assert.equal(parseInt(molecule2.position.x), 4);
     assert.equal(parseInt(molecule2.position.y), 5);
+
+    let molecule3 = new Molecule(new Point(0, 1), new Vector(1, 1));
+    molecule3.moveByTime(5);
+    assert.equal(parseInt(molecule3.position.x), 5);
+    assert.equal(parseInt(molecule3.position.y), 6);
   });
 
   it('should detect collision', function() {

@@ -5,14 +5,24 @@
   "license": "GPL-3.0",
   "repository": "github:stan-kondrat/molecules",
   "scripts": {
+    "serve": "webpack-dev-server --inline --content-base ./dist",
     "test": "mocha --compilers js:babel-register src/**/*.spec.js"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
-    "babel-preset-es2015": "^6.14.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
     "babel-preset-stage-2": "^6.13.0",
     "chai": "^3.5.0",
+    "copy-webpack-plugin": "^3.0.1",
     "eslint": "^3.4.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.9"
+  },
+  "dependencies": {
+    "pixi.js": "^4.1.0"
   }
 }

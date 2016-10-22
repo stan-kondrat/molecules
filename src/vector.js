@@ -17,16 +17,15 @@ class Vector {
   }
 }
 
-
-describe('Vector class', function() {
+describe('Vector class should', function() {
   const assert = require('chai').assert;
 
-  it('should create new vector', function() {
+  it('create new vector', function() {
     let vector = new Vector();
     assert.equal(vector.x, 0);
   });
 
-  it('should calc angles', function() {
+  it('calc angles', function() {
     let vector = new Vector(-1, 0);
     assert.equal(vector.angleRadians(), Math.PI);
     vector.x = -100;
@@ -34,7 +33,7 @@ describe('Vector class', function() {
     assert.equal(vector.angleDegrees(), 180);
   });
 
-  it('should concatinat two vectors', function() {
+  it('concatinat two vectors', function() {
     let vector1 = new Vector(1, 2);
     let vector2 = new Vector(3, 4);
     let vector3 = Vector.concat(vector1, vector2);

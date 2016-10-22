@@ -5,7 +5,7 @@
   "license": "GPL-3.0",
   "repository": "github:stan-kondrat/molecules",
   "scripts": {
-    "test": "mocha --compilers js:babel-register src"
+    "test": "mocha --compilers js:babel-register src/**/*.spec.js"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",

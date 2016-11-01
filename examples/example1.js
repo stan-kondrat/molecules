@@ -8,13 +8,13 @@ var playing = false;
 var world = null;
 
 const stage = new PIXI.Container();;
-const renderer = PIXI.autoDetectRenderer(400, 300, {
-  backgroundColor: 0xfdf6e3,
+const renderer = PIXI.autoDetectRenderer(600, 400, {
+  transparent: true,
   antialias: true
 });
 
-document.body.onload = play;
-document.body.appendChild(renderer.view);
+window.onload = play;
+document.querySelector('#viewport').appendChild(renderer.view);
 document.querySelector('#play').onclick = play;
 document.querySelector('#pause').onclick = pause;
 
@@ -22,8 +22,12 @@ function play() {
   // prepare data
   world = new World();
   world.molecules = [
-    new Molecule(new Point(0, 0), new Vector(1, 1), 10),
-    new Molecule(new Point(200, 200), new Vector(1, 0), 10),
+    new Molecule(new Point(100, 100), new Vector(1, 0), 30),
+    new Molecule(new Point(300, 100), new Vector(0, 0), 30),
+    new Molecule(new Point(100, 200), new Vector(1, 0), 10),
+    new Molecule(new Point(300, 200), new Vector(0, 0), 30),
+    new Molecule(new Point(100, 300), new Vector(2, 0), 20),
+    new Molecule(new Point(200, 300), new Vector(1, 0), 20),
   ];
 
   // add data render container
@@ -42,7 +46,7 @@ function pause() {
 }
 
 function draw() {
-  if(playing){
+  if(playing && world.time < 400){
     world.live(1);
     world.molecules.forEach(sprite);
     requestAnimationFrame(draw);
@@ -54,7 +58,7 @@ function draw() {
 function sprite(molecule) {
   if (!molecule.sprite) {
     var graphic = new PIXI.Graphics();
-    graphic.lineStyle(1,0x93a1a1)
+    graphic.lineStyle(1,0x586e75)
     graphic.beginFill(0xeee8d5);
     graphic.drawCircle(molecule.radius, molecule.radius, molecule.radius);
     graphic.endFill();

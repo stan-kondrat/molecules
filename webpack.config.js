@@ -1,4 +1,5 @@
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var webpack = require('webpack');
 
 module.exports = {
   context: __dirname + "/examples",
@@ -11,7 +12,10 @@ module.exports = {
   },
   plugins: [
       new CopyWebpackPlugin([
-        { from: '*.html' }
+        { from: '*.html' },
+        { from: '*.svg' },
+        { from: '*.css' },
       ]),
+      new webpack.SourceMapDevToolPlugin(),
   ],
 };

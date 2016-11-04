@@ -2,25 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Example 1</title>
+    <title>Collisions examples</title>
     <link rel="stylesheet" href="./main.css" media="screen" title="no title">
   </head>
   <body>
-    <button id="play">play</button>
-    <button id="pause">pause</button>
-    <br>
-    <div id="viewport"></div>
-
-    <h3>Continuous Collision Detection</h3>
-    <p>
-      `M(vec p, vec v, r)` is object, where `vec p` - position, `vec v` - speed, `r` - radius.
-    </p>
-    <p>
-      To detect Continuous Collision of two objects `M_A` and `M_B`,
-      lets find angle `alpha` between vectors of speed `alpha = /_ (vec v_A, vec v_B)`
-    </p>
-    <p>...</p>
-
     <h3>Perfectly elastic collision</h3>
     <p>
       The conservation of the <b>total momentum</b> (`vec p = m * vec v`) before and after the collision:
@@ -35,9 +20,27 @@
         `(m_A * u_A^2)/2 + (m_B * v_B^2)/2 = (m_A * v_A^2)/2 + (m_B * v_B^2)/2`
       </p>
     </p>
+    <div id="example1" class="viewport"></div>
+
+    <h3>Two-dimensional collision with two moving objects</h3>
+    <p>
+       The overall velocity of each body must be split into two perpendicular velocities
+       `vec v = vec v_t + v_c`, where `vec v_t` - velocity tangent to the common normal surfaces of the colliding bodies, `vec t_c` - along the line of collision.
+    </p>
+    <div id="example2" class="viewport"></div>
+
+    <h3>Continuous Collision Detection</h3>
+    <p>
+      `M(vec p, vec v, r)` is object, where `vec p` - position, `vec v` - speed, `r` - radius.
+    </p>
+    <p>
+      To detect Continuous Collision of two objects `M_A` and `M_B`,
+      lets find angle `alpha` between vectors of speed `alpha = /_ (vec v_A, vec v_B)`
+    </p>
+    <p>...</p>
 
   </body>
-  <script src="./example1.bundle.js" charset="utf-8"></script>
+  <script src="./examples.bundle.js" charset="utf-8"></script>
   <script type="text/javascript" async
   src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>

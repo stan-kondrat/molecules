@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   context: __dirname + "/examples",
   entry: {
-      example1: "./example1.js",
+      examples: "./examples.js",
   },
   output: {
     path: __dirname + "/dist",

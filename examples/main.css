@@ -1,5 +1,18 @@
-#viewport {
+.viewport {
   background: url(./grid.svg) repeat 0% 0% #fdf6e3;
   width: 601px;
   height: 401px;
+  position: relative;
+}
+
+.viewport > canvas {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.viewport > input {
+  position: relative;
+  z-index: 2;
 }

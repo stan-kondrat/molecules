@@ -2,6 +2,7 @@ import World from '../src/world';
 import Molecule from '../src/molecule';
 import Point from '../src/point';
 import Vector from '../src/vector';
+import logger from '../src/logger';
 const PIXI = require('pixi.js');
 
 
@@ -50,6 +51,10 @@ export default class Render {
 
   pause() {
     this.playing = false;
+  }
+
+  loggingToggle() {
+    logger.enabled = !logger.enabled;
   }
 
   draw() {

@@ -8,14 +8,24 @@ function createButton(name) {
   return button;
 }
 
+function createCheckbox(name) {
+  let checkbox = document.createElement("input");
+  checkbox.type = 'checkbox';
+  checkbox.value = name;
+  return checkbox;
+}
+
 function prepareViewport(id, example) {
   let container = document.querySelector(id);
   let resetButton = createButton('reset');
   let playButton = createButton('play');
   let pauseButton = createButton('pause');
+  let logging = createCheckbox('logging');
   container.appendChild(resetButton);
   container.appendChild(playButton);
   container.appendChild(pauseButton);
+  container.appendChild(logging);
+  container.appendChild(document.createTextNode('logging'));
   container.appendChild(example.renderer.view);
   resetButton.onclick = function () {
     example.reset();
@@ -25,6 +35,9 @@ function prepareViewport(id, example) {
   }
   pauseButton.onclick = function () {
     example.pause();
+  }
+  logging.onclick = function () {
+    example.loggingToggle();
   }
 }
 

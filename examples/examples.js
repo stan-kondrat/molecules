@@ -54,8 +54,8 @@ prepareViewport('#example1', example1);
 
 
 let example2 = new Render([
-  [100, 150, 1, 0, 50],
-  [300, 200, 0, 0, 50],
+  [200, 200, 2, 0, 50],
+  [350, 200, -1, .5, 50],
 ]);
 
 prepareViewport('#example2', example2);

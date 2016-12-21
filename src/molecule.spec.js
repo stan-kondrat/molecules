@@ -29,27 +29,26 @@ describe('Molecule class should', function() {
     let m1 = new Molecule(new Point(1, 0));
     let m2 = new Molecule(new Point(2, 0), null, 1.1);
     let m3 = new Molecule(new Point(5, 5), null, 5);
-    assert.isTrue(Molecule.intersect(m1, m2));
-    assert.isFalse(Molecule.intersect(m1, m3));
+    assert.isTrue(Molecule.intersect(m1, m2), 'first test');
+    assert.isFalse(Molecule.intersect(m1, m3), 'second test');
   });
 
-  it('detect collision - centers of molecules', function() {
-    let ignoreRadius = true;
+  it('detect collision - molecules with zero radius ', function() {
     let m1 = new Molecule(new Point(2, 2), new Vector(1, 1), 0);
     let m2 = new Molecule(new Point(6, 0), new Vector(-1, 2), 0);
     let m3 = new Molecule(new Point(5, 3), new Vector(0, 0));
-    assert.equal(Molecule.collision(m1, m2, ignoreRadius), 2, 'collision should be in point {4,4}');
-    assert.isUndefined(Molecule.collision(m1, m3, ignoreRadius));
+    assert.equal(Molecule.collision(m1, m2), 2, 'collision should be in point {4,4}');
+    assert.isUndefined(Molecule.collision(m1, m3));
 
     // m4 and m5 on parallel lines
     let m4 = new Molecule(new Point(1, 1), new Vector(2, 1), 0);
     let m5 = new Molecule(new Point(3, 3), new Vector(-2, -1), 0);
-    assert.isUndefined(Molecule.collision(m4, m5, ignoreRadius), 'should not be collision, molecules on parallel lines');
+    assert.isUndefined(Molecule.collision(m4, m5), 'should not be collision, molecules on parallel lines');
 
     // m6 and m7 on same line, but different direction
     let m6 = new Molecule(new Point(1, 1), new Vector(-1, -1), 0);
     let m7 = new Molecule(new Point(3, 3), new Vector(2, 2), 0);
-    assert.isUndefined(Molecule.collision(m4, m5, ignoreRadius), 'should not be collision, molecules on different direcitons');
+    assert.isUndefined(Molecule.collision(m4, m5), 'should not be collision, molecules on different direcitons');
   });
 
   it('detect collision - considering radius of molecules', function() {
@@ -62,6 +61,5 @@ describe('Molecule class should', function() {
     let m4 = new Molecule(new Point(120, 110), new Vector(44, 5), 80);
     let m5 = new Molecule(new Point(340, 484), new Vector(28, -22), 30);
     assert.equal(Math.floor(Molecule.collision(m4, m5)), 10, 'collision should be in right time');
-
   });
 })

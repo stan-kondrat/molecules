@@ -5,8 +5,11 @@
   "license": "GPL-3.0",
   "repository": "github:stan-kondrat/molecules",
   "scripts": {
-    "serve": "webpack-dev-server --inline --content-base ./dist",
+    "serve": "webpack-dev-server --hot --content-base ./dist",
     "test": "mocha --compilers js:babel-register src/**/*.spec.js"
+  },
+  "engines" : {
+    "node" : ">7.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
